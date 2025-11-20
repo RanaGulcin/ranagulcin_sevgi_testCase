@@ -36,7 +36,7 @@ public class QATest extends BaseTest {
         qaJobPage.openQAPage();
         qaJobPage.clickSeeAllQAJobs();
         qaJobPage.filterLocation("Istanbul, Turkey");
-        qaJobPage.filterDepartment();
+        qaJobPage.filterDepartment("Quality Assurance");
 
         //4- Check that all jobs’ Position contains “Quality Assurance”, Department contains “Quality Assurance”, and Location contains “Istanbul, Turkey”
         qaJobPage.getJobList().forEach(job -> {

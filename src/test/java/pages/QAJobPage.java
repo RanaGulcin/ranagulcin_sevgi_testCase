@@ -45,21 +45,17 @@ public class QAJobPage extends BasePage {
         locationDropdown.click();
         System.out.println("Click on Location Dropdown");
 
-        WebElement option = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//li[contains(text(),'" + location + "')]")));
-        option.click();
+        driver.findElement(By.xpath("//li[contains(text(),'" + location + "')]")).click();
         System.out.println("Click on " + location);
     }
 
-    public void filterDepartment() {
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-//        wait.until(ExpectedConditions.elementToBeClickable(locationDropdown));
+    public void filterDepartment(String department) {
 
         departmentDropdown.click();
         System.out.println("Click on Departmnt Dropdown");
 
-        driver.findElement(By.xpath("//li[@id='select2-filter-by-department-result-3lj6-Quality Assurance']")).click();
-        System.out.println("Click on Quality Assurance");
+        driver.findElement(By.xpath("//li[contains(text(),'" + department + "')]")).click();
+        System.out.println("Click on " + department);
     }
 
     public List<WebElement> getJobList() {
