@@ -9,14 +9,14 @@ public class CareersPage extends BasePage {
     @FindBy(xpath = "//a[@href='https://useinsider.com/careers/']")
     private WebElement careersMenuButton;
 
-    @FindBy(linkText = "See all teams")
-    private WebElement teamsButton;
+    @FindBy(xpath = "//section[@id='career-find-our-calling']")
+    private WebElement teamsBlock;
 
-    @FindBy(xpath = "//h3[normalize-space()='Our Locations']")
-    private WebElement locationHeader;
+    @FindBy(xpath = "//section[@id='career-our-location']")
+    private WebElement locationBlock;
 
-    @FindBy(xpath = "//h2[text()='Life at Insider']")
-    private WebElement lifeAtInsiderHeader;
+    @FindBy(xpath = "//section[@data-id='a8e7b90']")
+    private WebElement lifeAtInsiderBlock;
 
 
 
@@ -25,15 +25,15 @@ public class CareersPage extends BasePage {
     }
 
     public boolean isteamsButtonVisible() {
-        return teamsButton.isDisplayed();
+        return teamsBlock.isDisplayed();
     }
 
     public boolean islocationHeaderVisible() {
-        return locationHeader.isDisplayed();
+        return locationBlock.isDisplayed();
     }
 
     public boolean isLifeAtInsiderVisible() {
-        return lifeAtInsiderHeader.isDisplayed();
+        return lifeAtInsiderBlock.isDisplayed();
     }
 
 

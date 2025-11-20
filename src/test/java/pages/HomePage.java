@@ -19,10 +19,10 @@ public class HomePage extends BasePage {
 
 
     public void openHomePage() {
-        driver.get("url");
+        driver.get("homeUrl");
 
         String currentUrl = driver.getCurrentUrl();
-        if ("url"== currentUrl){
+        if ("homeUrl"== currentUrl){
             System.out.println("Insider ana sayfasına gidildi.");
         }
     }
