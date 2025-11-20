@@ -16,10 +16,10 @@ public class QAJobPage extends BasePage {
     @FindBy(xpath = "//a[@href='https://useinsider.com/careers/open-positions/?department=qualityassurance']")
     private WebElement seeAllQAJobsButton;
 
-    @FindBy(xpath = "//span[@data-select2-id='1']")
+    @FindBy(xpath = "//span[@aria-labelledby='select2-filter-by-location-container']")
     private WebElement locationDropdown;
 
-    @FindBy(xpath = "(//span[@class='selection'])[2]")
+    @FindBy(xpath = "//span[@aria-labelledby='select2-filter-by-department-container']")
     private WebElement departmentDropdown;
 
     @FindBy(css = "div.position-list div")
@@ -45,7 +45,7 @@ public class QAJobPage extends BasePage {
         locationDropdown.click();
         System.out.println("Click on Location Dropdown");
 
-        driver.findElement(By.xpath("//li[contains(text(),'" + location + "')]")).click();
+        driver.findElement(By.xpath("//option[contains(text(),'" + location + "')]")).click();
         System.out.println("Click on " + location);
     }
 
@@ -54,7 +54,7 @@ public class QAJobPage extends BasePage {
         departmentDropdown.click();
         System.out.println("Click on Departmnt Dropdown");
 
-        driver.findElement(By.xpath("//li[contains(text(),'" + department + "')]")).click();
+        driver.findElement(By.xpath("//option[contains(text(),'" + department + "')]")).click();
         System.out.println("Click on " + department);
     }
 

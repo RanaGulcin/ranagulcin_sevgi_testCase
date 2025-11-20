@@ -35,13 +35,14 @@ public class QATest extends BaseTest {
         //3- Go to https://useinsider.com/careers/quality-assurance/, click “See all QA jobs”, filter jobs by Location: “Istanbul, Turkey”, and Department: “Quality Assurance”, check the presence of the jobs list
         qaJobPage.openQAPage();
         qaJobPage.clickSeeAllQAJobs();
-        qaJobPage.filterLocation("Istanbul, Turkey");
+        qaJobPage.filterLocation("Istanbul, Turkiye");
         qaJobPage.filterDepartment("Quality Assurance");
 
         //4- Check that all jobs’ Position contains “Quality Assurance”, Department contains “Quality Assurance”, and Location contains “Istanbul, Turkey”
         qaJobPage.getJobList().forEach(job -> {
-            Assert.assertTrue(job.getText().contains("Istanbul, Turkey"));
+
             Assert.assertTrue(job.getText().contains("Quality Assurance"));
+            Assert.assertTrue(job.getText().contains("Istanbul, Turkiye"));
         });
 
         //5- Click the “View Role” button and check that this action redirects us to the Lever Application form page
