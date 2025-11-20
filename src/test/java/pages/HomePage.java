@@ -19,12 +19,13 @@ public class HomePage extends BasePage {
 
 
     public void openHomePage() {
-        driver.get("homeUrl");
+        driver.get("https://useinsider.com/");
+        System.out.println("Visited https://useinsider.com/ ");
+    }
 
+    public boolean isCorrectHomePage(){
         String currentUrl = driver.getCurrentUrl();
-        if ("homeUrl"== currentUrl){
-            System.out.println("Insider ana sayfasına gidildi.");
-        }
+        return currentUrl.contains("https://useinsider.com/");
     }
 
 
@@ -33,14 +34,15 @@ public class HomePage extends BasePage {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
             wait.until(ExpectedConditions.visibilityOf(cookieAcceptBtn));
             cookieAcceptBtn.click();
-            System.out.println("Cookie popup kapatıldı.");
+            System.out.println("Cookie popup closed.");
         } catch (Exception e) {
-            System.out.println("Cookie popup görünmedi, test devam ediyor.");
+            System.out.println("Cookie popup is not saw, test is going.");
         }
     }
 
     public void clickCompanyMenu() {
         companyMenuButton.click();
+        System.out.println("Company Menu Button is clicked.");
     }
 
 

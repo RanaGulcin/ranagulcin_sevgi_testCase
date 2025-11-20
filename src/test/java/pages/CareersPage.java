@@ -22,6 +22,7 @@ public class CareersPage extends BasePage {
 
     public void openCareersPage() {
         careersMenuButton.click();
+        System.out.println("Careers Menu Button is clicked.");
     }
 
     public boolean isteamsButtonVisible() {
