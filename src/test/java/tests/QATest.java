@@ -63,6 +63,13 @@ public class QATest extends BaseTest {
         List<WebElement> filteredJobs = qaJobPage.getJobList();
         System.out.println("Filtrelenmiş Toplam İş Sayısı: " + filteredJobs.size());
 
+        //5sn bekle
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
         filteredJobs.forEach(job -> {
 
             // Alt elementlerin selector'lerinin doğru olduğundan emin olun!
