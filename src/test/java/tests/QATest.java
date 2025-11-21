@@ -13,6 +13,7 @@ import pages.LeverFormPage;
 import pages.QAJobPage;
 
 import java.time.Duration;
+import java.util.List;
 
 import static utilties.Driver.driver;
 
@@ -50,35 +51,32 @@ public class QATest extends BaseTest {
     public void QAJobPageTest(){
         //3- Go to https://useinsider.com/careers/quality-assurance/, click “See all QA jobs”, filter jobs by Location: “Istanbul, Turkey”, and Department: “Quality Assurance”, check the presence of the jobs list
         qaJobPage.openQAPage();
+        homePage.closeCookieIfPresent();
         qaJobPage.clickSeeAllQAJobs();
         qaJobPage.filterLocation("Istanbul, Turkiye");
         qaJobPage.filterDepartment("Quality Assurance");
 
         //4- Check that all jobs’ Position contains “Quality Assurance”, Department contains “Quality Assurance”, and Location contains “Istanbul, Turkey”
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector(".position-list-item"), 0));
 
-        qaJobPage.getJobList().forEach(job -> {
+        List<WebElement> filteredJobs = qaJobPage.getJobList();
+        System.out.println("Filtrelenmiş Toplam İş Sayısı: " + filteredJobs.size());
 
-            // Text geliyormu kontrol için
-            System.out.println("JOB TEXT = " + job.getText());
+        filteredJobs.forEach(job -> {
 
-            WebElement departmentElement = wait.until(
-                    ExpectedConditions.visibilityOf(
-                            job.findElement(By.cssSelector(".position-department"))
-                    )
-            );
-            WebElement locationElement = wait.until(
-                    ExpectedConditions.visibilityOf(
-                            job.findElement(By.cssSelector(".position-location"))
-                    )
-            );
+            // Alt elementlerin selector'lerinin doğru olduğundan emin olun!
+            WebElement departmentElement = job.findElement(By.cssSelector(".position-department"));
+            WebElement locationElement = job.findElement(By.cssSelector(".position-location"));
 
             String department = departmentElement.getText().trim();
             String location = locationElement.getText().trim();
 
+            System.out.println("JOB TEXT = " + job.getText()); // Tüm metni yazdırıp ne geldiğini kontrol edilmesi
             System.out.println("DEPARTMENT = " + department);
             System.out.println("LOCATION   = " + location);
 
+            // Doğrulama (Assertion)
             Assert.assertEquals(department, "Quality Assurance", "Departman QA değil!");
             Assert.assertEquals(location, "Istanbul, Turkiye", "Lokasyon doğru değil!");
         });
