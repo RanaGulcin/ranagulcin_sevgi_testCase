@@ -1,4 +1,4 @@
-# 🤖 Insider QA Engineer Otomasyon Görevi
+# 🤖 QA Engineer Otomasyon Görevi
 
 ## ✨ Proje Özeti
 Bu proje, Insider firmasının web sitesi üzerindeki **Kariyer Sayfası (Careers Page)** iş akışını otomatize etmek amacıyla tasarlanmıştır. Görev, belirli bir pozisyonun (Quality Assurance) belirli bir lokasyonda (Istanbul, Turkey) listelenip listelenmediğini kontrol etmeyi ve başvuru formuna yönlendirmeyi içermektedir.
