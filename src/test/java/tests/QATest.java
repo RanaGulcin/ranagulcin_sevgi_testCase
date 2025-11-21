@@ -1,5 +1,6 @@
 package tests;
 
+import base.BasePage;
 import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -20,6 +21,7 @@ import static utilties.Driver.driver;
 public class QATest extends BaseTest {
 
 
+    BasePage basePage = new BasePage();
     HomePage homePage = new HomePage();
     CareersPage careersPage = new CareersPage();
     QAJobPage qaJobPage = new QAJobPage();
@@ -31,7 +33,7 @@ public class QATest extends BaseTest {
         //1- Visit https://useinsider.com/ and check Insider home page is opened or not
         homePage.openHomePage();
         Assert.assertTrue(homePage.isCorrectHomePage(),"URL is correct.");
-        homePage.closeCookieIfPresent();
+        basePage.closeCookieIfPresent();
         homePage.clickCompanyMenu();
 
     }
@@ -51,7 +53,7 @@ public class QATest extends BaseTest {
     public void QAJobPageTest(){
         //3- Go to https://useinsider.com/careers/quality-assurance/, click “See all QA jobs”, filter jobs by Location: “Istanbul, Turkey”, and Department: “Quality Assurance”, check the presence of the jobs list
         qaJobPage.openQAPage();
-        homePage.closeCookieIfPresent();
+        basePage.closeCookieIfPresent();
         qaJobPage.clickSeeAllQAJobs();
         qaJobPage.filterLocation("Istanbul, Turkiye");
         qaJobPage.filterDepartment("Quality Assurance");
@@ -94,6 +96,7 @@ public class QATest extends BaseTest {
     public void LeverFormPageTest(){
         //5- Click the “View Role” button and check that this action redirects us to the Lever Application form page
         qaJobPage.clickFirstViewRole();
+        leverFormPage.switchToNewTab();
         Assert.assertTrue(leverFormPage.isCorrectLeverUrl(),"This page is Lever Form Page.");
     }
 }
