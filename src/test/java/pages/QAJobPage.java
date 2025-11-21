@@ -16,13 +16,13 @@ public class QAJobPage extends BasePage {
     @FindBy(xpath = "//a[@href='https://useinsider.com/careers/open-positions/?department=qualityassurance']")
     private WebElement seeAllQAJobsButton;
 
-    @FindBy(xpath = "//span[@aria-labelledby='select2-filter-by-location-container']")
+    @FindBy(xpath = "(//span[@role='presentation'])[1]")
     private WebElement locationDropdown;
 
-    @FindBy(xpath = "//span[@aria-labelledby='select2-filter-by-department-container']")
+    @FindBy(id = "select2-filter-by-department-container")
     private WebElement departmentDropdown;
 
-    @FindBy(css = "div.position-list div")
+    @FindBy(css = ".position-list-item")
     private List<WebElement> jobList;
 
 
@@ -45,17 +45,18 @@ public class QAJobPage extends BasePage {
         locationDropdown.click();
         System.out.println("Click on Location Dropdown");
 
-        driver.findElement(By.xpath("//option[contains(text(),'" + location + "')]")).click();
-        System.out.println("Click on " + location);
+        driver.findElement( By.xpath("//li[contains(@class,'select2-results__option') and text()='" + location + "']")).click();
+        System.out.println("Selected Location: " + location);
     }
 
     public void filterDepartment(String department) {
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
+        wait.until(ExpectedConditions.elementToBeClickable(departmentDropdown));
         departmentDropdown.click();
-        System.out.println("Click on Departmnt Dropdown");
+        System.out.println("Click on Department Dropdown");
 
-        driver.findElement(By.xpath("//option[contains(text(),'" + department + "')]")).click();
-        System.out.println("Click on " + department);
+        driver.findElement(By.xpath("//li[contains(@class,'select2-results__option') and text()='" + department + "']")).click();
+        System.out.println("Selected Department: " + department);
     }
 
     public List<WebElement> getJobList() {
