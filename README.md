@@ -18,7 +18,7 @@ Bu otomasyon projesi, yüksek performans ve okunabilirlik sağlamak için aşağ
 | **Tasarım Deseni** | **Page Object Model (POM)** |Kodun temiz, yeniden kullanılabilir ve sürdürülebilir olması sağlanmıştır. |
 | **Element Bulma** | **Optimize Edilmiş CSS/XPath** | Hızlı ve güvenilir element bulucular kullanılmıştır. |
 
-> 📌 **Not:** Görev gereksinimleri uyarınca **BDD (Behavior-Driven Development)** yaklaşımları (Cucumber, Quantum, Codeception, vb.) kullanılmamıştır[cite: 12].
+> 📌 **Not:** Görev gereksinimleri uyarınca **BDD (Behavior-Driven Development)** yaklaşımları (Cucumber, Quantum, Codeception, vb.) kullanılmamıştır.
 
 ---
 
