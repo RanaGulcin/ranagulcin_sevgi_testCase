@@ -38,11 +38,10 @@ public class BasePage {
 
     public void switchToNewTab() {
         try {
-            // Mevcut ana pencerenin kimliğini al
+
             String originalWindow = driver.getWindowHandle();
 
-            System.out.println("Yeni sekmenin açılması bekleniyor...");
-            // Yeni bir pencerenin açılmasını bekle (Pencere sayısı 1'den fazla olmalı)
+            System.out.println("Waiting for opening new window...");
             wait.until(driver -> driver.getWindowHandles().size() > 1);
 
             // Tüm açık pencerelerin kimliklerini al
@@ -52,13 +51,13 @@ public class BasePage {
             for (String windowHandle : allWindows) {
                 if (!originalWindow.contentEquals(windowHandle)) {
                     driver.switchTo().window(windowHandle);
-                    System.out.println("Yeni sekmeye geçiş yapıldı. Yeni Sayfa Başlığı: " + driver.getTitle());
+                    System.out.println("Open new tab. Tab title: " + driver.getTitle());
                     break;
                 }
             }
         } catch (Exception e) {
-            System.out.println("HATA: Yeni sekmeye geçiş yapılamadı! Detay: " + e.getMessage());
-            // Hatayı fırlat ki test burada dursun ve hatayı görelim.
+            System.out.println("FAIL: Can not open new window! Detail: " + e.getMessage());
+
             throw e;
         }
     }

@@ -17,13 +17,16 @@ public class Driver {
 
     public static WebDriver getDriver(){
 
-        String useBrowser = ConfigReader.properties.getProperty("browser");
+        String useBrowser = ConfigReader.getProperty("browser");
 
-        if (useBrowser==null){
-            useBrowser="chrome";
+        if (useBrowser == null){
+            useBrowser = "chrome";
         }
+
         if (driver == null){
+
             switch (useBrowser){
+
                 case "edge":
                     driver = new EdgeDriver();
                     break;
