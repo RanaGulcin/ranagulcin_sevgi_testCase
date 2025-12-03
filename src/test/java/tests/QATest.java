@@ -86,8 +86,8 @@ public class QATest extends BaseTest {
             System.out.println("LOCATION   = " + location);
 
             // Doğrulama (Assertion)
-            Assert.assertEquals(department, "Quality Assurance", "Departman QA değil!");
-            Assert.assertEquals(location, "Istanbul, Turkiye", "Lokasyon doğru değil!");
+            Assert.assertEquals(department, "Quality Assurance", "Departman is not QA!");
+            Assert.assertEquals(location, "Istanbul, Turkiye", "Location is not true!");
         });
 
     }

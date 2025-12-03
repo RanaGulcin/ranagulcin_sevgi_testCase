@@ -11,9 +11,6 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "(//a[@id='navbarDropdownMenuLink'])[5]")
     private WebElement companyMenuButton;
 
-    @FindBy(xpath = "//a[@id='wt-cli-accept-all-btn']")
-    private WebElement cookieAcceptBtn;
-
 
     public void openHomePage() {
         driver.get("https://useinsider.com/");

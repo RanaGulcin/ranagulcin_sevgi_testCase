@@ -10,14 +10,18 @@ public class ConfigReader {
 
     static {
 
-        String fileLine = "src/configuration.properties";
+        String fileLine = "configuration.properties";
+
         try {
+
             FileInputStream file = new FileInputStream(fileLine);
             properties = new Properties();
             properties.load(file);
+
         }catch (IOException e){
             System.out.println("configuration.properties can not read.");
         }
+
 
     }
 
